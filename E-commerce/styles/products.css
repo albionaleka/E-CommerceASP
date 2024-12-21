@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --black: #000101;
+    --grey: #7b7a7b;
+    --darker: #18181d;
+    --lightblue: #2497f2;
+    --darkblue: #4352ff;
+    --orange: #ff6b35;
+    --yellow: #fdc500;
+    --lighter: #d3d3d3;
+}
+
+.products {
+    padding-top: 20px;
+    box-sizing: border-box;
+}
+
+#products-heading {
+    color: var(--darkblue);
+    font-weight: bold;
+    font-family: "Epilogue";
+}
+
+.products-cards {
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.product-card{
+    height: 30vh;
+    width: 90%;
+    margin: auto;
+    background-color: #f0f0f0;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.product-card:hover {
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+    transform: scale(1.02);
+    transition: ease 0.7s;
+}
+
+.product-image {
+    margin-bottom: 15px;
+}
+
+.product-name {
+    margin-bottom: 20px;
+}
+
+#category-picker:hover {
+    cursor: pointer;
+}
+
+#category-picker li a:hover {
+    color: var(--darkblue);
+    background-color: #f0f0f0;
+    transition: 0.5s ease;
+}

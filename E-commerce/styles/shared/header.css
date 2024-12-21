@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Montserrat';
+}
+
+:root {
+    --black: #000101;
+    --grey: #7b7a7b;
+    --darker: #18181d;
+    --lightblue: #2497f2;
+    --darkblue: #4352ff;
+    --orange: #ff6b35;
+    --yellow: #fdc500;
+    --lighter: #d3d3d3;
+}
+
+.cart-img {
+    /* filter: invert(); */
+    max-height: 30px;
+    max-width: 30px;
+}
+
+.brand-name {
+    font-weight: bold;
+    color: var(--darker);
+}
+
+.search-bar {
+    width: 55%;
+}
+
+@media (max-width: 1200px) {
+    .search-bar {
+        width: 45%;
+    }
+}
+
+@media (max-width: 992px) {
+    .search-bar {
+        width: 100%;
+    }
+
+    .brand-name {
+        display: none;
+    }
+
+    .collapse, .collapse-list {
+        margin-top: 20px;
+    }
+}
+
+.products-link, .contact-link {
+    font-family: "Epilogue";
+}
+
+.cart-icon {
+    font-size: 150%;
+    font-weight: bold;
+}
+
+.collapse-list {
+    margin-right: 20px;
+} 
+
