@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace E_commerce
 {
-    public partial class Forma : System.Web.UI.Page
+    public partial class Product : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

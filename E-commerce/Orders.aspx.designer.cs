@@ -11,7 +11,7 @@ namespace E_commerce
 {
 
 
-    public partial class About
+    public partial class Orders
     {
     }
 }
