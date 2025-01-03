@@ -32,6 +32,12 @@
     margin-bottom: 30px;
 }
 
+.login-form, .signup-form {
+    color: var(--darker);
+    min-height: 100lvh;
+    max-height: 100lvh;
+}
+
 .contact-form {
     color: var(--darkblue);
     min-height: 100lvh;

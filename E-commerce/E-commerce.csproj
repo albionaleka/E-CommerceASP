@@ -218,6 +218,7 @@
     <Content Include="images\products\womens-puffer-jacket.jpg" />
     <Content Include="images\products\xmas-lights.jpg" />
     <Content Include="images\products\zip-up-hoodie.jpg" />
+    <Content Include="Login.aspx" />
     <Content Include="obj\Debug\E-commerce.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\E-commerce.dll" />
     <Content Include="obj\Debug\E-commerce.pdb" />
@@ -309,6 +310,7 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="Signup.aspx" />
     <Content Include="Site.Master" />
     <Content Include="styles\checkout.css" />
     <Content Include="styles\orders.css" />
@@ -350,6 +352,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\csObject.cs" />
+    <Compile Include="Models\csUserSignUp.cs" />
     <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="Orders.aspx.cs">
       <DependentUpon>Orders.aspx</DependentUpon>
@@ -366,6 +377,13 @@
       <DependentUpon>Product.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Signup.aspx.cs">
+      <DependentUpon>Signup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Signup.aspx.designer.cs">
+      <DependentUpon>Signup.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
