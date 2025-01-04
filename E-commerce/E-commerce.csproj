@@ -180,9 +180,13 @@
     <Content Include="favicon.ico" />
     <Content Include="Contact.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="images\business-img.svg" />
     <Content Include="images\carousel1.jpg" />
     <Content Include="images\carousel2.jpg" />
     <Content Include="images\carousel3.jpg" />
+    <Content Include="images\form-img.png" />
+    <Content Include="images\form-img.svg" />
+    <Content Include="images\login-img.svg" />
     <Content Include="images\logos\LightText.png" />
     <Content Include="images\logos\LogoDark.png" />
     <Content Include="images\logos\LogoLight.png" />
@@ -218,6 +222,7 @@
     <Content Include="images\products\womens-puffer-jacket.jpg" />
     <Content Include="images\products\xmas-lights.jpg" />
     <Content Include="images\products\zip-up-hoodie.jpg" />
+    <Content Include="images\wave.svg" />
     <Content Include="Login.aspx" />
     <Content Include="obj\Debug\E-commerce.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\E-commerce.dll" />
@@ -272,6 +277,7 @@
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
     <Content Include="README.md" />
     <Content Include="Products.aspx" />
+    <Content Include="SignupBusiness.aspx" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\checkout.js" />
     <Content Include="Scripts\index.js" />
@@ -359,6 +365,7 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Models\csBusinessSignup.cs" />
     <Compile Include="Models\csObject.cs" />
     <Compile Include="Models\csUserSignUp.cs" />
     <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
@@ -411,6 +418,13 @@
     </Compile>
     <Compile Include="Products.aspx.designer.cs">
       <DependentUpon>Products.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SignupBusiness.aspx.cs">
+      <DependentUpon>SignupBusiness.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SignupBusiness.aspx.designer.cs">
+      <DependentUpon>SignupBusiness.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

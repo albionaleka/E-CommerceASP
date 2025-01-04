@@ -19,13 +19,14 @@ namespace E_commerce.Models
         public csObject() 
         {
             string con = ConfigurationManager.ConnectionStrings["connectionEcommerce"].ToString();
+            Connection = new SqlConnection(con);
         }
 
         public void fnConnection() { }
 
         public int runProcedure (string storedProcedure, IDataParameter[] parameters)
         {
-            int res = 0;
+            int res = -1;
 
             try
             {
@@ -39,7 +40,15 @@ namespace E_commerce.Models
                     cmd.Parameters.Add(parameter);
                 }
 
-                cmd.ExecuteNonQuery();
+                int rows = cmd.ExecuteNonQuery();
+
+                if (rows > 0)
+                {
+                    res = 0;
+                } else
+                {
+                    res = -1;
+                }
 
                 Connection.Close();
             } catch (Exception)

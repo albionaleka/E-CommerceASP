@@ -24,20 +24,27 @@ namespace E_commerce
             string password = userPassword.Text;
             string confirmPass = confirmPassword.Text;
 
-            Console.WriteLine(emri, mbiemri, email, password, confirmPass);
-
-            if (confirmPass == password)
+            if (string.IsNullOrEmpty(emri) || string.IsNullOrEmpty(mbiemri) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(confirmPass))
             {
-                int result = csUserSignUp.userSignup(emri, mbiemri, email, password);
+                Response.Write("<script type='text/javascript'>alert('Please fill out all the fields.');</script>");
+                return;
+            }
 
-                if (result > 0)
-                {
-                    Response.Redirect("~/Default");
-                }
-                else
-                {
-                    Response.Write("<p>Signup Failed.</p>");
-                }
+            if (password != confirmPass)
+            {
+                Response.Write("<script type='text/javascript'>alert('Passwords do not match!');</script>");
+                return;
+            }
+
+            int result = csUserSignUp.userSignup(emri, mbiemri, email, password);
+
+            if (result == 0)
+            {
+                Response.Clear();
+                Response.Redirect("~/Default.aspx");
+            } else
+            {
+                Response.Write("<script type='text/javascript'>alert('Signup Failed! Email address already in use.');</script>");
             }
         }
     }

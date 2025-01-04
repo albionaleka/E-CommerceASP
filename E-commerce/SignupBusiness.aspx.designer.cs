@@ -11,53 +11,35 @@ namespace E_commerce
 {
 
 
-    public partial class Signup
+    public partial class signupBusiness
     {
 
         /// <summary>
-        /// signup control.
+        /// businessName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm signup;
+        protected global::System.Web.UI.WebControls.TextBox businessName;
 
         /// <summary>
-        /// userName control.
+        /// businessEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox userName;
+        protected global::System.Web.UI.WebControls.TextBox businessEmail;
 
         /// <summary>
-        /// userLastName control.
+        /// businessPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox userLastName;
-
-        /// <summary>
-        /// userEmail control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox userEmail;
-
-        /// <summary>
-        /// userPassword control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox userPassword;
+        protected global::System.Web.UI.WebControls.TextBox businessPassword;
 
         /// <summary>
         /// confirmPassword control.

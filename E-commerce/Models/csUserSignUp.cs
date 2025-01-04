@@ -14,18 +14,25 @@ namespace E_commerce.Models
     {
         public static int userSignup(string Emri, string Mbiemri, string Email, string Password)
         {
-            int result = 0;
+            int result;
 
-            csObject user = new csObject();
-            SqlParameter[] parameter = new SqlParameter[]
+            try
             {
+                csObject user = new csObject();
+                SqlParameter[] parameter = new SqlParameter[]
+                {
                 new SqlParameter("@Emri", Emri),
                 new SqlParameter("@Mbiemri", Mbiemri),
                 new SqlParameter("@Email", Email),
                 new SqlParameter("@Password", Password)
-            };
+                };
 
-            result = user.runProcedure("prSignUp", parameter);
+                result = user.runProcedure("prSignUp", parameter);
+            } catch
+            {
+                result = -1;
+            }
+            
 
             return result;
         }
