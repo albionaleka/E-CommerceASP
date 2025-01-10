@@ -58,10 +58,9 @@
                 <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item d-flex mx-auto search-bar w-auto">
-                            <input class="form-control me-2 search-input" placeholder="Search">
-                            <button class="btn btn-outline-primary" id="search">
-                                <i class="bi bi-search"></i>
-                            </button>
+                            <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control me-2 search-input" ></asp:TextBox>
+                            <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btn btn-outline-primary" OnClick="btnSearch_Click" />
+
                         </li>
 
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Products">Products</a></li>

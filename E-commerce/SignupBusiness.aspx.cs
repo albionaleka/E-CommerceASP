@@ -34,18 +34,8 @@ namespace E_commerce
                 return;
             }
 
-            int result = csBusinessSignup.businessSignup(emri, email, password);
-            Response.Write($"<p>{result}</p>");
-
-            //if (result == 0)
-            //{
-            //    Response.Clear();
-            //    Response.Redirect("~/Default.aspx");
-            //}
-            //else
-            //{
-            //    Response.Write("<script type='text/javascript'>alert('Signup Failed! Email address already in use.');</script>");
-            //}
+            csBusinessSignup.businessSignup(emri, email, password);
+            Response.Redirect("~/Default.aspx");
         }
     }
 }

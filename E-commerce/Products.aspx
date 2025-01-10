@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Products" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Products.aspx.cs" Inherits="E_commerce.WebForm1" %>
+﻿<%@ Page Title="Products" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Products.aspx.cs" Inherits="E_commerce.Products" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container products text-center justify-content-center">
         <h1 id="products-heading">Products</h1>
@@ -16,7 +16,24 @@
             </div>
         </div>
 
-        <div class="products-cards row row-cols-1 row-cols-md-3 g-4 text-center"></div>
+        <div class="products-cards row row-cols-1 row-cols-md-3 g-4 text-center">
+            <asp:Repeater ID="productsRepeater" runat="server">
+                <ItemTemplate>
+                    <div class="col-md-4 mb-3">
+                        <div class="featured-card card h-100 d-flex flex-column">
+                            <a href="Product.aspx?product=<%# Eval("ProductID") %>" class="product-link">
+                                <img src='<%# Eval("ImageURL") %>' alt='<%# Eval("ProductName") %>' class="card-img-top card-img img-fluid" data-product-id="<%# Eval("ProductID") %>" />
+                            </a>
+                        
+                            <h5 class="card-title"><%# Eval("ProductName") %></h5>
+                            <p class="card-text"><%# Eval("Description") %></p>
+                            <p class="product-price">$<%# Eval("Price") %></p>
+                            <asp:Button runat="server" ID="addProduct" CssClass="blue-btn js-addProduct" Text="Add To Cart" />
+                        </div>
+                    </div>
+                </ItemTemplate>
+            </asp:Repeater>
+        </div>
     </div>
 
     <div class="alert-container">

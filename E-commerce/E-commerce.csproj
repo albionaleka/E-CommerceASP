@@ -99,6 +99,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AddProduct.aspx" />
     <Content Include="bin\Antlr3.Runtime.dll" />
     <Content Include="bin\Antlr3.Runtime.pdb" />
     <Content Include="bin\E-commerce.dll" />
@@ -326,12 +327,20 @@
     <Content Include="styles\shared\header.css" />
     <Content Include="styles\shared\shared.css" />
     <Content Include="styles\style.css" />
+    <Content Include="uploadedProducts\womens-puffer-jacket.jpg" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddProduct.aspx.cs">
+      <DependentUpon>AddProduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddProduct.aspx.designer.cs">
+      <DependentUpon>AddProduct.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Cart.aspx.cs">
@@ -366,7 +375,10 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\csBusinessSignup.cs" />
+    <Compile Include="Models\csDefault.cs" />
     <Compile Include="Models\csObject.cs" />
+    <Compile Include="Models\csPostProduct.cs" />
+    <Compile Include="Models\csUserLogin.cs" />
     <Compile Include="Models\csUserSignUp.cs" />
     <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="Orders.aspx.cs">

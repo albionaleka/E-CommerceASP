@@ -75,7 +75,7 @@
     border: none;
     padding: 10px 25px;
     box-sizing: border-box;
-    margin-bottom: 15px;
+    margin: auto;
 }
 
 .blue-btn:hover {

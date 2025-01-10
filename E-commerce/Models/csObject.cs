@@ -35,20 +35,12 @@ namespace E_commerce.Models
                 SqlCommand cmd = new SqlCommand(storedProcedure, Connection);
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                foreach (SqlParameter parameter in parameters)
+                foreach (IDataParameter parameter in parameters)
                 {
                     cmd.Parameters.Add(parameter);
                 }
 
-                int rows = cmd.ExecuteNonQuery();
-
-                if (rows > 0)
-                {
-                    res = 0;
-                } else
-                {
-                    res = -1;
-                }
+                res = cmd.ExecuteNonQuery();
 
                 Connection.Close();
             } catch (Exception)
@@ -59,7 +51,7 @@ namespace E_commerce.Models
             return res;
         }
 
-        public DataSet RunQuery(string query, string tableName)
+        public DataSet RunQuery(string query, string tableName, SqlParameter[] parameters = null)
         {
             DataSet ds = new DataSet();
 
@@ -69,6 +61,14 @@ namespace E_commerce.Models
 
             SqlCommand cmd = new SqlCommand(query, Connection);
             cmd.CommandType = CommandType.Text;
+
+            if (parameters != null)
+            {
+                foreach (IDataParameter param in parameters)
+                {
+                    cmd.Parameters.Add(param);
+                }
+            }
 
             sqlda.SelectCommand = cmd;
             sqlda.Fill(ds, tableName);

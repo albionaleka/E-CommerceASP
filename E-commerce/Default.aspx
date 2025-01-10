@@ -57,9 +57,26 @@
         <div class="featured container text-center justify-content-center">
             <h1 class="featured-heading">Featured products</h1>
 
-            <div class="row row-cols-1 row-cols-md-3 g-4 featured-products-cards text-center"></div>
+            <div class="row row-cols-1 row-cols-md-3 g-4 featured-products-cards text-center">
+                <asp:Repeater ID="productRepeater" runat="server">
+                    <ItemTemplate>
+                        <div class="col-md-4 mb-3">
+                            <div class="featured-card card h-100 d-flex flex-column">
+                                <a href="Product.aspx?product=<%# Eval("ProductID") %>" class="product-link">
+                                    <img src='<%# Eval("ImageURL") %>' alt='<%# Eval("ProductName") %>' class="card-img-top card-img img-fluid" data-product-id="<%# Eval("ProductID") %>" />
+                                </a>
+                                    
+                                <h5 class="card-title"><%# Eval("ProductName") %></h5>
+                                <p class="card-text"><%# Eval("Description") %></p>
+                                <p class="product-price">$<%# Eval("Price") %></p>
+                                <asp:Button runat="server" ID="addProduct" CssClass="blue-btn js-addProduct" Text="Add To Cart" />
+                            </div>
+                        </div>
+                    </ItemTemplate>
+                </asp:Repeater>
+            </div>
 
-            <a href="products.html" class="blue-btn" id="view-all">View All</a>
+            <a href="Products.aspx" class="blue-btn" id="view-all">View All</a>
         </div>
 
         <div class="container categories text-center">
