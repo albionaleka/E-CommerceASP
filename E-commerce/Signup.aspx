@@ -50,7 +50,7 @@
                         <asp:Textbox runat="server" CssClass="form-control" ID="confirmPassword" />
                     </div>
 
-                     <asp:Button runat="server" Text="Sign Up" CssClass="blue-btn" ID="SignUpBtn" OnClick="SignUpBtn_Click"/>
+                     <asp:Button runat="server" Text="Sign Up" CssClass="blue-btn mb-3" ID="SignUpBtn" OnClick="SignUpBtn_Click"/>
                  </form>
 
                 <p>Already have an account? <a href="Login.aspx">Log In</a>.</p>

@@ -42,7 +42,6 @@
     color: var(--darkblue);
     min-height: 100lvh;
     max-height: 100lvh;
-    background: url('../../images/wave.svg') bottom no-repeat;
 }
 
 .cancel-message {

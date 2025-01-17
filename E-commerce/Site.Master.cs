@@ -27,12 +27,15 @@ namespace E_commerce
                     if (Session["UserType"].ToString() == "User")
                     {
                         lnkCart.Visible = true;
+                        lnkOrders.Visible = true;
                     }
 
                     if (Session["UserType"].ToString() == "Admin")
                     {
                         lnkAdmin.Visible = true;
                     }
+
+                    lnkContact.Visible = true;
                 }
             }
         }
