@@ -12,7 +12,29 @@ namespace E_commerce
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                if (Session["ID"] != null)
+                {
+                    btnLogout.Visible = true;
+                    lnkLogin.Visible = false;
 
+                    if (Session["UserType"].ToString() == "Business")
+                    {
+                        lnkAddProduct.Visible = true;
+                    }
+
+                    if (Session["UserType"].ToString() == "User")
+                    {
+                        lnkCart.Visible = true;
+                    }
+
+                    if (Session["UserType"].ToString() == "Admin")
+                    {
+                        lnkAdmin.Visible = true;
+                    }
+                }
+            }
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
@@ -23,6 +45,13 @@ namespace E_commerce
             {
                 Response.Redirect($"~/Products.aspx?search={search}");
             }
+        }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Clear();
+            Response.Redirect("~/Default");
         }
     }
 }

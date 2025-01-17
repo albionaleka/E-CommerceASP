@@ -12,8 +12,7 @@ namespace E_commerce.Models
 {
     public class csPostProduct
     {
-        // int Biznesi
-        public static int postProduct(int Kategoria, string Emri, string Pershkrimi, string Image, string Price)
+        public static int postProduct(int Kategoria, string Emri, string Pershkrimi, decimal Price, string Image)
         {
             int result;
 
@@ -22,15 +21,15 @@ namespace E_commerce.Models
                 csObject product = new csObject();
                 SqlParameter[] parameter = new SqlParameter[]
                 {
-                    new SqlParameter("@Biznesi", 20000),
-                    new SqlParameter("@Kategoria", Kategoria),
+                    new SqlParameter("@ID_Biznesi", 20000),
+                    new SqlParameter("@ID_Kategoria", Kategoria),
                     new SqlParameter("@Emri", Emri),
                     new SqlParameter("@Pershkrimi", Pershkrimi),
                     new SqlParameter("@Image", Image),
-                    new SqlParameter("@Price", Convert.ToDecimal(Price))
+                    new SqlParameter("@Price", Price)
                 };
 
-                result = product.runProcedure("prPostProduct", parameter);
+                result = product.runProcedure("prPostProducts", parameter);
             }
             catch
             {

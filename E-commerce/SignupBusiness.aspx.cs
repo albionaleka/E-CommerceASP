@@ -34,8 +34,16 @@ namespace E_commerce
                 return;
             }
 
-            csBusinessSignup.businessSignup(emri, email, password);
-            Response.Redirect("~/Default.aspx");
+            int success = csBusinessSignup.businessSignup(emri, email, password);
+
+            if (success == 1)
+            {
+                Response.Redirect("~/Default.aspx");
+            } else
+            {
+                Response.Write("<script type='text/javascript'>alert('An error occurred. Please try again.');</script>");
+            }
+            
         }
     }
 }

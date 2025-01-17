@@ -193,6 +193,7 @@
     <Content Include="images\logos\LogoLight.png" />
     <Content Include="images\logos\TextualLogoDark.png" />
     <Content Include="images\logos\TextualLogoLight.png" />
+    <Content Include="images\post-product.svg" />
     <Content Include="images\products\camping-chairs.jpg" />
     <Content Include="images\products\comforter-set.jpg" />
     <Content Include="images\products\cotton-t-shirt.jpg" />
@@ -210,6 +211,7 @@
     <Content Include="images\products\lip-balms.jpg" />
     <Content Include="images\products\mens-watch.png" />
     <Content Include="images\products\nightstand.jpg" />
+    <Content Include="images\products\no-image.jpg" />
     <Content Include="images\products\office-chair.jpg" />
     <Content Include="images\products\pngtree-fashion-female-bag-png-image_2393052.jpg" />
     <Content Include="images\products\rose-candle.jpg" />
@@ -327,6 +329,9 @@
     <Content Include="styles\shared\header.css" />
     <Content Include="styles\shared\shared.css" />
     <Content Include="styles\style.css" />
+    <Content Include="uploadedProducts\juicer-machine.jpg" />
+    <Content Include="uploadedProducts\leather-purse.jpg" />
+    <Content Include="uploadedProducts\silver-hoop-earrings.jpg" />
     <Content Include="uploadedProducts\womens-puffer-jacket.jpg" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -380,6 +385,8 @@
     <Compile Include="Models\csPostProduct.cs" />
     <Compile Include="Models\csUserLogin.cs" />
     <Compile Include="Models\csUserSignUp.cs" />
+    <Compile Include="Models\productModel.cs" />
+    <Compile Include="Models\userModel.cs" />
     <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="Orders.aspx.cs">
       <DependentUpon>Orders.aspx</DependentUpon>

@@ -69,11 +69,25 @@
 
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Orders">Orders</a></li>
 
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Cart">
-                            Cart
-                        </a></li>
+                        <li class="nav-item">
+                            <asp:HyperLink ID="lnkCart" runat="server" NavigateUrl="~/Cart" Text="Cart" Visible="false" CssClass="nav-link" />
+                        </li>
 
-                        <li class="nav-item"><a class="nav-link" runat="server" href="Login.aspx">Log In</a></li>
+                        <li class="nav-item">
+                            <asp:HyperLink ID="lnkAddProduct" runat="server" NavigateUrl="~/AddProduct" Text="Add Product" Visible="false" CssClass="nav-link" />
+                        </li>
+
+                        <li class="nav-item">
+                            <asp:HyperLink ID="lnkAdmin" runat="server" NavigateUrl="~/Default" Text="Dashboard" Visible="false" CssClass="nav-link" />
+                        </li>
+
+                        <li class="nav-item">
+                            <asp:HyperLink ID="lnkLogin" runat="server" NavigateUrl="~/Login" Text="Login" CssClass="nav-link" Visible="true" />
+                        </li>
+
+                        <li class="nav-item">
+                            <asp:Button ID="btnLogout" runat="server" Text="Log Out" CssClass="btn nav-link" Visible="false" OnClick="btnLogout_Click" />
+                        </li>
                     </ul>
                 </div>
             </div>

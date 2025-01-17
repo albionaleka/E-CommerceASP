@@ -40,7 +40,13 @@ namespace E_commerce.Models
                     cmd.Parameters.Add(parameter);
                 }
 
-                res = cmd.ExecuteNonQuery();
+                SqlParameter returnParameter = new SqlParameter();
+                returnParameter.Direction = ParameterDirection.ReturnValue;
+                cmd.Parameters.Add(returnParameter);
+
+                cmd.ExecuteNonQuery();
+
+                res = (int)returnParameter.Value;
 
                 Connection.Close();
             } catch (Exception)

@@ -39,14 +39,13 @@
                          <asp:Textbox runat="server" TextMode="Password" ID="userPassword" CssClass="form-control" />
                      </div>
 
-                     <input type="checkbox" onchange="document.getElementById('userPassword').type=this.checked? 'text':'password'" />
-                     <i class="bi bi-eye-fill"></i> <br />
+                     <input type="checkbox" onchange="document.getElementById('userPassword').type=this.checked? 'text':'password'" />Show Password <br />
+                     <asp:CheckBox runat="server" ID="checkRemember" Text="Remember Me" /> <br />
 
                      <asp:Button runat="server" ID="userLogin" Text="Log In" CssClass="blue-btn" OnClick="userLogin_Click"/>
                  </form>
 
                 <p>Dont have an account yet? <a href="Signup.aspx">Sign Up</a>.</p>
-                <p>Already have a business account? <a href="Signup.aspx">Log In</a>.</p>
             </div>
         </div>
     </div>

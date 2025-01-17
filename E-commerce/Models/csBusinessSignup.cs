@@ -22,11 +22,13 @@ namespace E_commerce.Models
                 SqlParameter[] parameter = new SqlParameter[]
                 {
                     new SqlParameter("@Emri", Emri),
+                    new SqlParameter("@Mbiemri", ""),
                     new SqlParameter("@Email", Email),
-                    new SqlParameter("@Password", Password)
+                    new SqlParameter("@Password", Password),
+                    new SqlParameter("@Role", "Business")
                 };
 
-                result = business.runProcedure("prSignupBizneset", parameter);
+                result = business.runProcedure("prSignup", parameter);
             }
             catch
             {

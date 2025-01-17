@@ -36,8 +36,23 @@ namespace E_commerce
                 return;
             }
 
-            csUserSignUp.userSignup(emri, mbiemri, email, password);
-            Response.Redirect("~/Default.aspx");
+            int success = csUserSignUp.userSignup(emri, mbiemri, email, password);
+
+            if (success == 1)
+            {
+                userModel user = csUserLogin.userLogin(email, password);
+
+                Session["ID"] = user.UserID;
+                Session["UserType"] = user.UserType;
+                Session["Email"] = user.Email;
+
+                Response.Redirect($"~/Default.aspx?id={Session["ID"]}");
+            }
+            else
+            {
+                Response.Write("<script type='text/javascript'>alert('An error occurred. Please try again.');</script>");
+            }
+
         }
     }
 }

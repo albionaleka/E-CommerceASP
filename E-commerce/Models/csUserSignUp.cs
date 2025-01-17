@@ -21,10 +21,11 @@ namespace E_commerce.Models
                 csObject user = new csObject();
                 SqlParameter[] parameter = new SqlParameter[]
                 {
-                new SqlParameter("@Emri", Emri),
-                new SqlParameter("@Mbiemri", Mbiemri),
-                new SqlParameter("@Email", Email),
-                new SqlParameter("@Password", Password)
+                    new SqlParameter("@Emri", Emri),
+                    new SqlParameter("@Mbiemri", Mbiemri),
+                    new SqlParameter("@Email", Email),
+                    new SqlParameter("@Password", Password),
+                    new SqlParameter("@Role", "User")
                 };
 
                 result = user.runProcedure("prSignUp", parameter);

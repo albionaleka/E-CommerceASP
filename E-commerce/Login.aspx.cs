@@ -19,6 +19,7 @@ namespace E_commerce
         {
             string email = userEmail.Text.Trim();
             string password = userPassword.Text.Trim();
+            bool saveCookies = checkRemember.Checked;
 
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
@@ -26,9 +27,26 @@ namespace E_commerce
                 return;
             }
 
-            int userID = csUserLogin.userLogin(email, password);
-            Session["ID"] = userID;
-            Response.Redirect($"~/Default");
+            if (saveCookies)
+            {
+                Response.Cookies["email"].Value = email;
+                Response.Cookies["email"].Expires = DateTime.Now.AddDays(10);
+            }
+
+            userModel user = csUserLogin.userLogin(email, password);
+            if (user == null)
+            {
+                Response.Write("<script type='text/javascript'>alert('Invalid login credentials.');</script>");
+                return;
+            }
+
+            Session.RemoveAll();
+
+            Session["ID"] = user.UserID;
+            Session["UserType"] = user.UserType;
+            Session["Email"] = user.Email;
+            Response.Redirect($"~/Default?user={Session["ID"]}");
+            
         }
     }
 }

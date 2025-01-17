@@ -36,7 +36,7 @@ namespace E_commerce
             List<Product> products = new List<Product>();
 
             csObject objekti = new csObject();
-            string query = "SELECT * FROM tblProduktet";
+            string query = "SELECT TOP 6 * FROM tblProduktet";
             DataSet ds = objekti.RunQuery(query, "Products");
 
             foreach (DataRow row in ds.Tables["Products"].Rows)
