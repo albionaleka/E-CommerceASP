@@ -55,10 +55,9 @@ namespace E_commerce
             public string Role { get; set; }
         }
 
-        public class productsInfo : productModel 
+        public class productsInfo : ProductModel 
         {
             public int BusinessID { get; set; }
-            public int CategoryID { get; set; }
         }
 
         public class businessInfo
@@ -165,7 +164,7 @@ namespace E_commerce
                 {
                     OrderID = Convert.ToInt32(row["ID_Porosia"]),
                     UserID = Convert.ToInt32(row["ID_Perdoruesi"]),
-                    Payment = Convert.ToDecimal(row["Pagesa"]),
+                    Payment = Math.Round(Convert.ToDecimal(row["Pagesa"]), 2),
                     Date = row["DataKoha"].ToString(),
                     OrderCount = Convert.ToInt32(row["Count"])
                 });
@@ -173,11 +172,9 @@ namespace E_commerce
 
             return orders;
         }
-
         protected void btnLogout_Click(object sender, EventArgs e)
         {
             Session.Abandon();
-            Response.Clear();
             Response.Redirect("~/Default");
         }
     }

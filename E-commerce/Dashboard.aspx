@@ -20,7 +20,13 @@
                     <nav class="nav flex-column pt-5">
                         <img src="images/admin.png" alt="Admin Icon" class="img-fluid mx-auto rounded-circle w-50 mb-5" style="filter: invert();" />
 
-                        <a href="Default.aspx" class="nav-item mb-5">Home</a>
+                        <a href="Default.aspx" class="nav-item mb-3">Home</a>
+
+                        <a href="Products.aspx" class="nav-item mb-3">Products</a>
+
+                        <a href="Contact.aspx" class="nav-item mb-3">Contact</a>
+
+                        <a href="AddProduct.aspx" class="nav-item mb-3">Add Product</a>
 
                         <asp:Button ID="btnLogout" runat="server" Text="Log Out" CssClass="btn white" OnClick="btnLogout_Click" />
                     </nav>

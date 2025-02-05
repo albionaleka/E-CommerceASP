@@ -58,8 +58,8 @@
                 <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item d-flex mx-auto search-bar w-auto">
-                            <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control me-2 search-input" ></asp:TextBox>
-                            <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btn btn-outline-primary" OnClick="btnSearch_Click" />
+                            <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control me-2 search-input" placeholder="Search..."></asp:TextBox>
+                            <asp:Button ID="btnSearch" runat="server" Text="🔎" CssClass="btn btn-outline-primary" OnClick="btnSearch_Click" />
 
                         </li>
 
@@ -74,11 +74,15 @@
                         </li>
 
                         <li class="nav-item">
-                            <asp:HyperLink ID="lnkCart" runat="server" NavigateUrl="~/Cart" Text="Cart" Visible="false" CssClass="nav-link" />
+                            <asp:HyperLink ID="lnkCart" runat="server" NavigateUrl="~/Cart" Text="Cart🛒" Visible="false" CssClass="nav-link" />
                         </li>
 
                         <li class="nav-item">
                             <asp:HyperLink ID="lnkAddProduct" runat="server" NavigateUrl="~/AddProduct" Text="Add Product" Visible="false" CssClass="nav-link" />
+                        </li>
+
+                        <li class="nav-item">
+                            <asp:HyperLink ID="lnkPosted" runat="server" NavigateUrl="~/Posted" Text="Posted" Visible="false" CssClass="nav-link" />
                         </li>
 
                         <li class="nav-item">
@@ -109,21 +113,25 @@
                             <h3>Contact Us</h3>
                             <p><i class="bi bi-envelope"></i>: e-commerce@gmail.com</p>
                             <p><i class="bi bi-telephone"></i>: +38344123123</p>
+                            <p><i class="bi bi-geo-alt-fill"></i>: Kosovo</p>
+
+                            <p>
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1504723.9799341739!2d19.582632763617266!3d42.557118477399534!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13537af354bf7df1%3A0xbfffeedfabc31791!2sKosovo!5e0!3m2!1sen!2s!4v1738709326409!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="img-fluid w-100 rounded"></iframe>
+                            </p>
                         </div>
 
                         <div class="footer-content col-lg-4">
                             <h3>Quick Links</h3>
-                            <p><a href="index.html">Home</a></p>
-                            <p><a href="products.html">Products</a></p>
-                            <p><a href="cart.html">Cart</a></p>
-                            <p><a href="#">Contact</a></p>
+                            <p><a href="~/Default">Home</a></p>
+                            <p><a href="~/Products.aspx">Products</a></p>
+                            <p><a href="~/Contact.aspx">Contact</a></p>
                         </div>
 
                         <div class="footer-content col-lg-4">
                             <h3>Follow Us</h3>
-                            <p><a href="#"><i class="bi bi-facebook"></i>: Facebook</a></p>
-                            <p><a href="#"><i class="bi bi-instagram"></i>: Instagram</a></p>
-                            <p><a href="#"><i class="bi bi-twitter"></i>: Twitter</a></p>
+                            <p><a href="facebook.com"><i class="bi bi-facebook"></i>: Facebook</a></p>
+                            <p><a href="instagram.com"><i class="bi bi-instagram"></i>: Instagram</a></p>
+                            <p><a href="x.com"><i class="bi bi-twitter"></i>: Twitter</a></p>
                         </div>
                     </div>
 

@@ -58,7 +58,7 @@
             <h1 class="featured-heading">Featured products</h1>
 
             <div class="row row-cols-1 row-cols-md-3 g-4 featured-products-cards text-center">
-                <asp:Repeater ID="productRepeater" runat="server">
+                <asp:Repeater ID="productRepeater" runat="server" OnItemCommand="productRepeater_ItemCommand">
                     <ItemTemplate>
                         <div class="col-md-4 mb-3">
                             <div class="featured-card card h-100 d-flex flex-column">
@@ -68,8 +68,16 @@
                                     
                                 <h5 class="card-title"><%# Eval("ProductName") %></h5>
                                 <p class="card-text"><%# Eval("Description") %></p>
-                                <p class="product-price">$<%# Eval("Price") %></p>
-                                <asp:Button runat="server" ID="addProduct" CssClass="blue-btn js-addProduct" Text="Add To Cart" />
+
+                                <div class="row p-2 mt-auto">
+                                    <div class="col-lg-5">
+                                        <p class="product-price biggerText"><%# Eval("Price") %>€</p>
+                                    </div>
+
+                                    <div class="col-lg-7">
+                                        <asp:Button runat="server" ID="addProduct" CssClass="blue-btn js-addProduct" Text="Add To Cart" CommandName="AddToCart" CommandArgument='<%# Eval("ProductID") %>' />
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </ItemTemplate>
@@ -83,9 +91,22 @@
             <h2 class="featured-heading">Shop By Category</h2>
             <hr id="div-separator">
 
-            <div class="category-buttons"></div>
+            <div class="category-buttons">
+                <asp:Repeater runat="server" ID="categoryRepeater">
+                    <ItemTemplate>
+                        <asp:Button runat="server" ID="btnCategory" CssClass="orange-btn js-category-button" Text='<%# Eval("CategoryName") %>' CommandName="CategorySearch" CommandArgument='<%# Eval("CategoryID") %>' OnClick="btnCategory_Click" />
+                    </ItemTemplate>
+                </asp:Repeater>
+            </div>
         </div>
     </main>
+
+    <div class="alert-container">
+        <div class="alert alert-success alert-dismissible fade show added" role="alert" tabindex="-1">
+            Product has been successfully added to cart.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
 
     <script src="Scripts/index.js" type="module"></script>
 

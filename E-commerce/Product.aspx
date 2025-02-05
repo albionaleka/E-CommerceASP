@@ -4,12 +4,23 @@
         <div class="row">
             <div class="col-lg-8 product-container">
                 <div class="row product-info">
-                    <asp:Repeater ID="productRepeater" runat="server">
+                    <asp:Repeater ID="productRepeater" runat="server" OnItemCommand="productRepeater_ItemCommand">
                         <ItemTemplate>
                                 <div class="col-lg">
                                     <img src="<%# Eval("ImageURL") %>" class="img-fluid rounded" alt="<%# Eval("ProductName") %>" data-product-id="<%# Eval("ProductID") %>" />
                                 </div>
+
                                 <div class="col-lg">
+                                    <div class="row text-center">
+                                        <div class="col">
+                                            <p><i class="bi bi-truck"></i>: <%# Eval("Business") %></p>
+                                        </div>
+
+                                        <div class="col">
+                                            <p><i class="bi bi-tags"></i>: <%# Eval("Category") %></p>
+                                        </div>
+                                    </div>
+
                                     <h1 class="heading orange-text"><%# Eval("ProductName") %></h1>
 
                                     <p class="justify lh-lg desc"><%# Eval("Description") %></p>
@@ -20,9 +31,7 @@
                                         </div>
 
                                         <div class="col-7">
-                                            <button class="blue-btn js-addProduct" data-product-id="<%# Eval("ProductID") %>" >
-                                                Add to cart
-                                            </button>
+                                            <asp:Button runat="server" ID="addProduct" CssClass="blue-btn" Text="Add To Cart" CommandName="AddToCart" CommandArgument='<%# Eval("ProductID") %>' />
                                         </div>
                                     </div>
                                 </div>
@@ -36,7 +45,7 @@
                 <hr id="div-separator">
 
                 <div class="recommended-products">
-                    <asp:Repeater runat="server" ID="repeaterRecommended">
+                    <asp:Repeater runat="server" ID="repeaterRecommended" OnItemCommand="repeaterRecommended_ItemCommand">
                         <ItemTemplate>
                             <div class="product-card card mb-3">
                                 <div class="row g-0">
@@ -44,7 +53,7 @@
                                         <a href="Product.aspx?product=<%# Eval("ProductID") %>">
                                             <img src="<%# Eval("ImageURL") %>" class="img-fluid recommended-img" alt="<%# Eval("ProductName") %>" data-product-id="<%# Eval("ProductID") %>">
                                         </a>
-                                    </div>
+                                    &nbsp;&nbsp;</div>
 
                                     <div class="col-md-8">
                                         <div class="card-body">
@@ -54,9 +63,7 @@
                                                 <strong><%# Eval("Price") %></strong>
                                             </p>
                 
-                                            <button class="orange-btn js-addProduct" data-product-id="<%# Eval("ProductID") %>">
-                                                Add to cart
-                                            </button>
+                                            <asp:Button runat="server" ID="addProduct" CssClass="blue-btn js-addProduct" Text="Add To Cart" CommandName="AddToCart" CommandArgument='<%# Eval("ProductID") %>' />
                                         </div>
                                     </div>
                                 </div>
@@ -67,13 +74,6 @@
                 <asp:Label runat="server" ID="lblRecommended" CssClass="orange-text form-control-plaintext mb-3" />
                 <asp:HyperLink ID="linkProducts" runat="server" NavigateUrl="Products.aspx" CssClass="blue-btn" Visible="false" >View All</asp:HyperLink>
             </div>
-        </div>
-    </div>
-
-    <div class="alert-container">
-        <div class="alert alert-success alert-dismissible fade show added" role="alert" tabindex="-1">
-            Product has been successfully added to cart.
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     </div>
 

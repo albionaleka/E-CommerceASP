@@ -44,12 +44,26 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
@@ -179,14 +193,17 @@
     <Content Include="data\orders.js" />
     <Content Include="data\products.js" />
     <Content Include="Default.aspx" />
+    <Content Include="EditProduct.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Contact.aspx" />
     <Content Include="Global.asax" />
-    <Content Include="images\admin.jpg" />
+    <Content Include="images\admin.png" />
     <Content Include="images\business-img.svg" />
     <Content Include="images\carousel1.jpg" />
     <Content Include="images\carousel2.jpg" />
     <Content Include="images\carousel3.jpg" />
+    <Content Include="images\edit-product.svg" />
+    <Content Include="images\error-404.svg" />
     <Content Include="images\form-img.png" />
     <Content Include="images\form-img.svg" />
     <Content Include="images\login-img.svg" />
@@ -196,6 +213,7 @@
     <Content Include="images\logos\TextualLogoDark.png" />
     <Content Include="images\logos\TextualLogoLight.png" />
     <Content Include="images\post-product.svg" />
+    <Content Include="images\products\black-sunglasses.jpg" />
     <Content Include="images\products\camping-chairs.jpg" />
     <Content Include="images\products\comforter-set.jpg" />
     <Content Include="images\products\cotton-t-shirt.jpg" />
@@ -229,10 +247,12 @@
     <Content Include="images\products\zip-up-hoodie.jpg" />
     <Content Include="images\wave.svg" />
     <Content Include="Login.aspx" />
+    <Content Include="NotFound.aspx" />
     <Content Include="obj\Debug\E-commerce.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\E-commerce.dll" />
     <Content Include="obj\Debug\E-commerce.pdb" />
     <Content Include="Orders.aspx" />
+    <Content Include="Posted.aspx" />
     <Content Include="Product.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -332,8 +352,11 @@
     <Content Include="styles\shared\header.css" />
     <Content Include="styles\shared\shared.css" />
     <Content Include="styles\style.css" />
+    <Content Include="uploadedProducts\handheld-blender.jpg" />
+    <Content Include="uploadedProducts\headphones.jpg" />
     <Content Include="uploadedProducts\juicer-machine.jpg" />
     <Content Include="uploadedProducts\leather-purse.jpg" />
+    <Content Include="uploadedProducts\no-image.jpg" />
     <Content Include="uploadedProducts\silver-hoop-earrings.jpg" />
     <Content Include="uploadedProducts\womens-puffer-jacket.jpg" />
     <Content Include="ViewSwitcher.ascx" />
@@ -379,6 +402,13 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="EditProduct.aspx.cs">
+      <DependentUpon>EditProduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditProduct.aspx.designer.cs">
+      <DependentUpon>EditProduct.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -389,14 +419,27 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Models\csAddToCart.cs" />
     <Compile Include="Models\csBusinessSignup.cs" />
+    <Compile Include="Models\csCart.cs" />
     <Compile Include="Models\csDefault.cs" />
+    <Compile Include="Models\csEditProduct.cs" />
+    <Compile Include="Models\csModels.cs" />
     <Compile Include="Models\csObject.cs" />
+    <Compile Include="Models\csOrders.cs" />
+    <Compile Include="Models\csPosted.cs" />
     <Compile Include="Models\csPostProduct.cs" />
+    <Compile Include="Models\csProduct.cs" />
+    <Compile Include="Models\csProducts.cs" />
     <Compile Include="Models\csUserLogin.cs" />
     <Compile Include="Models\csUserSignUp.cs" />
-    <Compile Include="Models\productModel.cs" />
-    <Compile Include="Models\userModel.cs" />
+    <Compile Include="NotFound.aspx.cs">
+      <DependentUpon>NotFound.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NotFound.aspx.designer.cs">
+      <DependentUpon>NotFound.aspx</DependentUpon>
+    </Compile>
     <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="Orders.aspx.cs">
       <DependentUpon>Orders.aspx</DependentUpon>
@@ -404,6 +447,13 @@
     </Compile>
     <Compile Include="Orders.aspx.designer.cs">
       <DependentUpon>Orders.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Posted.aspx.cs">
+      <DependentUpon>Posted.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Posted.aspx.designer.cs">
+      <DependentUpon>Posted.aspx</DependentUpon>
     </Compile>
     <Compile Include="Product.aspx.cs">
       <DependentUpon>Product.aspx</DependentUpon>
@@ -464,6 +514,7 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.7.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.7.0.min.map" />
+    <Content Include="uploadedProducts\sunglasses.webp" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

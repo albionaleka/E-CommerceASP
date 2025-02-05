@@ -22,15 +22,12 @@ namespace E_commerce
                     if (Session["UserType"].ToString() == "Business")
                     {
                         lnkAddProduct.Visible = true;
-                    }
-
-                    if (Session["UserType"].ToString() == "User")
+                        lnkPosted.Visible = true;
+                    } else if (Session["UserType"].ToString() == "User")
                     {
                         lnkCart.Visible = true;
                         lnkOrders.Visible = true;
-                    }
-
-                    if (Session["UserType"].ToString() == "Admin")
+                    } else if (Session["UserType"].ToString() == "Admin")
                     {
                         lnkAdmin.Visible = true;
                     }

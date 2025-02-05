@@ -18,6 +18,10 @@ namespace E_commerce
                 List<Product> products = GetProducts();
                 productRepeater.DataSource = products;
                 productRepeater.DataBind();
+
+                List<Models.Category> categories = csDefault.getCategories();
+                categoryRepeater.DataSource = categories;
+                categoryRepeater.DataBind();
             }
         }
 
@@ -29,7 +33,6 @@ namespace E_commerce
             public decimal Price { get; set; }
             public string ImageURL { get; set; }
         }
-
 
         public List<Product> GetProducts()
         {
@@ -54,5 +57,32 @@ namespace E_commerce
             return products;
         }
 
+        protected void btnCategory_Click(object sender, EventArgs e)
+        {
+            Button clicked = (Button)sender;
+            int category = Convert.ToInt32(clicked.CommandArgument);
+
+            Response.Redirect($"~/Products.aspx?category={category}");
+        }
+
+        protected void productRepeater_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            if (e.CommandName == "AddToCart")
+            {
+                int productID = Convert.ToInt32(e.CommandArgument);
+                int userID = Convert.ToInt32(Session["ID"]);
+
+                int success = csAddToCart.addToCart(productID, userID);
+
+                if (success == 1)
+                {
+                    Response.Redirect("Cart.aspx");
+                }
+                else
+                {
+                    Response.Write("<script>alert('There was an error adding product to cart.')</script>");
+                }
+            }
+        }
     }
 }

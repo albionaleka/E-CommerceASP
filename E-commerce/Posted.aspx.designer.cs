@@ -11,25 +11,34 @@ namespace E_commerce
 {
 
 
-    public partial class _Default
+    public partial class Posted
     {
 
         /// <summary>
-        /// productRepeater control.
+        /// noListings control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater productRepeater;
+        protected global::System.Web.UI.WebControls.Label noListings;
 
         /// <summary>
-        /// categoryRepeater control.
+        /// addProduct control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater categoryRepeater;
+        protected global::System.Web.UI.WebControls.HyperLink addProduct;
+
+        /// <summary>
+        /// postedRepeater control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater postedRepeater;
     }
 }

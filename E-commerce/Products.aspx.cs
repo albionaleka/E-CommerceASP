@@ -13,20 +13,30 @@ namespace E_commerce
 {
     public partial class Products : System.Web.UI.Page
     {
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                List<Product> products = new List<Product>();
+                List<Models.Product> products = new List<Models.Product>();
                 string search = Request.QueryString["search"];
+                int category = Convert.ToInt32(Request.QueryString["category"]);
 
-                if (search == null)
+                if (search == null && category == 0)
                 {
-                    products = GetProducts();
+                    products = csProducts.GetProducts();
                 }
                 else
                 {
-                    products = GetQueryProducts(search);
+                    if (category != 0)
+                    {
+                        products = csProducts.GetCategoryProducts(category);
+                    }
+
+                    if (search != null)
+                    {
+                        products = csProducts.GetQueryProducts(search);
+                    }
                 }
 
                 productsRepeater.DataSource = products;
@@ -34,64 +44,31 @@ namespace E_commerce
             }
         }
 
-        public class Product
+        protected void productsRepeater_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
-            public int ProductID { get; set; }
-            public string ProductName { get; set; }
-            public string Description { get; set; }
-            public decimal Price { get; set; }
-            public string ImageURL { get; set; }
+            if (e.CommandName == "AddToCart")
+            {
+                int productID = Convert.ToInt32(e.CommandArgument);
+                int userID = Convert.ToInt32(Session["ID"]);
+
+                int success = csAddToCart.addToCart(productID, userID);
+
+                if (success > 0)
+                {
+                    Response.Redirect("Cart.aspx");
+                }
+                else
+                {
+                    Response.Write("<script>There was an error adding product to cart.</script>");
+                }
+            }
         }
 
-        public List<Product> GetProducts()
+        protected void CategoryPicker_Change (object sender, EventArgs e)
         {
-            List<Product> products = new List<Product>();
+            int categoryID = Convert.ToInt32(CategoryPicker.SelectedValue);
 
-            csObject display = new csObject();
-            DataSet ds = display.RunQuery("SELECT * FROM tblProduktet", "Products");
-
-            foreach (DataRow row in ds.Tables["Products"].Rows)
-            {
-                products.Add(new Product
-                {
-                    ProductID = Convert.ToInt32(row["ID_Produkti"]),
-                    ProductName = row["Emri_Prod"].ToString(),
-                    Description = row["Pershkrimi"].ToString(),
-                    Price = Math.Round(Convert.ToDecimal(row["Cmimi"]), 2),
-                    ImageURL = row["Foto"].ToString()
-                });
-            }
-
-            return products;
-        }
-
-        public List<Product> GetQueryProducts(string searchQuery)
-        {
-            List<Product> products = new List<Product>();
-
-            csObject display = new csObject();
-
-            string query = "SELECT * FROM tblProduktet WHERE Emri_Prod LIKE @Search";
-            SqlParameter[] parameters = new SqlParameter[]
-            {
-                new SqlParameter("@Search", $"%{searchQuery}%")
-            };
-
-            DataSet ds = display.RunQuery(query, "Products", parameters);
-
-            foreach (DataRow row in ds.Tables["Products"].Rows)
-            {
-                products.Add(new Product
-                {
-                    ProductID = Convert.ToInt32(row["ID_Produkti"]),
-                    ProductName = row["Emri_Prod"].ToString(),
-                    Description = row["Pershkrimi"].ToString(),
-                    Price = Math.Round(Convert.ToDecimal(row["Cmimi"]), 2),
-                    ImageURL = row["Foto"].ToString()
-                });
-            }
-
-            return products;
+            Response.Redirect($"~/Products.aspx?category={categoryID}");
         }
     }
 }

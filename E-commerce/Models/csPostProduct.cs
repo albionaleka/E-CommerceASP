@@ -12,7 +12,7 @@ namespace E_commerce.Models
 {
     public class csPostProduct
     {
-        public static int postProduct(int Kategoria, string Emri, string Pershkrimi, decimal Price, string Image)
+        public static int postProduct(int ID, int Kategoria, string Emri, string Pershkrimi, decimal Price, string Image)
         {
             int result;
 
@@ -21,7 +21,7 @@ namespace E_commerce.Models
                 csObject product = new csObject();
                 SqlParameter[] parameter = new SqlParameter[]
                 {
-                    new SqlParameter("@ID_Biznesi", 20000),
+                    new SqlParameter("@ID_Biznesi", ID),
                     new SqlParameter("@ID_Kategoria", Kategoria),
                     new SqlParameter("@Emri", Emri),
                     new SqlParameter("@Pershkrimi", Pershkrimi),

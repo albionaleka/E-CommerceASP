@@ -18,18 +18,21 @@ namespace E_commerce
             if (!IsPostBack)
             {
                 int productID = Convert.ToInt32(Request.QueryString["product"]);
-                List<productModel> product = getProduct(productID);
+                List<ProductModel> product = csProduct.GetProduct(productID);
 
                 int category = 0;
 
                 if (product != null)
                 {
-                    category = Convert.ToInt32(product[0].Category);
+                    category = Convert.ToInt32(product[0].CategoryID);
                     productRepeater.DataSource = product;
                     productRepeater.DataBind();
+                } else
+                {
+                    Response.Redirect("~/NotFound");
                 }
 
-                List<productModel> recommended = getRecommended(productID, category);
+                List<ProductModel> recommended = csProduct.GetRecommended(productID, category);
                 if (recommended != null)
                 {
                     if (recommended.Count > 0)
@@ -46,95 +49,43 @@ namespace E_commerce
             }
         }
 
-        protected List<productModel> getProduct(int id)
+        protected void productRepeater_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
-            csObject produkti = new csObject();
-            string query = "SELECT * FROM tblProduktet WHERE ID_Produkti=@ID";
-            SqlParameter[] parameter = new SqlParameter[]
-                {
-                    new SqlParameter("@ID", id)
-                };
-
-            DataSet ds = produkti.RunQuery(query, "tblProduktet", parameter);
-            List<productModel> product = new List<productModel>();
-
-            if (ds.Tables["tblProduktet"].Rows.Count > 0)
+            if (e.CommandName == "AddToCart")
             {
-                DataRow row = ds.Tables["tblProduktet"].Rows[0];
+                int productID = Convert.ToInt32(e.CommandArgument);
+                int userID = Convert.ToInt32(Session["ID"]);
 
-                product.Add(new productModel
+                int success = csAddToCart.addToCart(productID, userID);
+
+                if (success == 1)
                 {
-                    ProductID = Convert.ToInt32(row["ID_Produkti"]),
-                    ProductName = row["Emri_Prod"].ToString(),
-                    Description = row["Pershkrimi"].ToString(),
-                    Price = Math.Round(Convert.ToDecimal(row["Cmimi"]), 2),
-                    ImageURL = row["Foto"].ToString(),
-                    Category = Convert.ToInt32(row["ID_Kategoria"])
-                });
-
-                return product;
-            }
-            else
-            {
-                return null;
+                    Response.Redirect("Cart.aspx");
+                }
+                else
+                {
+                    Response.Write("<script>There was an error adding product to cart.</script>");
+                }
             }
         }
 
-        protected List<productModel> getRecommended(int id, int category=0)
+        protected void repeaterRecommended_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
-            string query;
-            SqlParameter[] parameter = null;
-
-            if (category != 0)
+            if (e.CommandName == "AddToCart")
             {
-                query = "SELECT TOP 3 * FROM tblProduktet WHERE ID_Kategoria=@Kategoria";
-                parameter = new SqlParameter[]
+                int productID = Convert.ToInt32(e.CommandArgument);
+                int userID = Convert.ToInt32(Session["ID"]);
+
+                int success = csAddToCart.addToCart(productID, userID);
+
+                if (success == 1)
                 {
-                    new SqlParameter("@Kategoria", category)
-                };
-            } else
-            {
-                query = "SELECT TOP 3 * FROM tblProduktet";
-            }
-            
-
-            csObject recommended = new csObject();
-
-            DataSet ds = new DataSet();
-
-            if (parameter != null)
-            {
-                ds = recommended.RunQuery(query, "tblProduktet", parameter);
-            } else
-            {
-                ds = recommended.RunQuery(query, "tblProduktet");
-            }
-
-            List<productModel> products = new List<productModel>();
-
-            if (ds.Tables["tblProduktet"].Rows.Count > 0)
-            {
-                foreach (DataRow product in ds.Tables["tblProduktet"].Rows)
-                {
-                    if (Convert.ToInt32(product["ID_Produkti"]) != id)
-                    {
-                        products.Add(new productModel
-                        {
-                            ProductID = Convert.ToInt32(product["ID_Produkti"]),
-                            ProductName = product["Emri_Prod"].ToString(),
-                            Description = product["Pershkrimi"].ToString(),
-                            Price = Math.Round(Convert.ToDecimal(product["Cmimi"]), 2),
-                            ImageURL = product["Foto"].ToString(),
-                            Category = Convert.ToInt32(product["ID_Kategoria"])
-                        });
-                    } 
+                    Response.Redirect("Cart.aspx");
                 }
-                
-                return products;
-            }
-            else
-            {
-                return null;
+                else
+                {
+                    Response.Write("<script>There was an error adding product to cart.</script>");
+                }
             }
         }
     }
