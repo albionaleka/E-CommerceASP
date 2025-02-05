@@ -34,7 +34,9 @@ namespace E_commerce
                 return;
             }
 
-            int success = csBusinessSignup.businessSignup(emri, email, password);
+            string hashed = Hash.HashPassword(password);
+
+            int success = csBusinessSignup.businessSignup(emri, email, hashed);
 
             if (success == 1)
             {

@@ -71,6 +71,8 @@
 
                     <h5 id="users">Users</h5>
 
+                    <asp:Label runat="server" ID="userCount" />
+
                     <asp:Repeater ID="userRepeater" runat="server">
                         <HeaderTemplate>
                             <div class="table p-3 repeater">
@@ -101,6 +103,7 @@
                     </asp:Repeater>
 
                     <h5 id="businesses">Businesses</h5>
+                    <asp:Label runat="server" ID="businessesCount" />
 
                     <asp:Repeater ID="businessRepeater" runat="server">
                         <HeaderTemplate>
@@ -128,6 +131,7 @@
                     </asp:Repeater>
 
                     <h5 id="products">Products</h5>
+                    <asp:Label runat="server" ID="productCount" />
 
                     <asp:Repeater ID="productRepeater" runat="server">
                         <HeaderTemplate>

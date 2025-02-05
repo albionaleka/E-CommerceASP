@@ -17,6 +17,11 @@ namespace E_commerce
         {
             if (!IsPostBack)
             {
+                if (Session["ID"] == null)
+                {
+                    Response.Redirect("~/Login");
+                }
+
                 int productID = Convert.ToInt32(Request.QueryString["product"]);
                 List<ProductModel> product = csProduct.GetProduct(productID);
 

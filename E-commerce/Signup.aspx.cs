@@ -36,17 +36,19 @@ namespace E_commerce
                 return;
             }
 
-            int success = csUserSignUp.userSignup(emri, mbiemri, email, password);
+            string hashed = Hash.HashPassword(password);
+
+            int success = csUserSignUp.userSignup(emri, mbiemri, email, hashed);
 
             if (success == 1)
             {
-                userModel user = csUserLogin.userLogin(email, password);
+                userModel user = csUserLogin.userLogin(email, hashed);
 
                 Session["ID"] = user.UserID;
                 Session["UserType"] = user.UserType;
                 Session["Email"] = user.Email;
 
-                Response.Redirect($"~/Default.aspx?id={Session["ID"]}");
+                Response.Redirect($"~/Default.aspx");
             }
             else
             {

@@ -60,7 +60,6 @@
                         <li class="nav-item d-flex mx-auto search-bar w-auto">
                             <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control me-2 search-input" placeholder="Search..."></asp:TextBox>
                             <asp:Button ID="btnSearch" runat="server" Text="🔎" CssClass="btn btn-outline-primary" OnClick="btnSearch_Click" />
-
                         </li>
 
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Products">Products</a></li>
@@ -96,6 +95,10 @@
                         <li class="nav-item">
                             <asp:Button ID="btnLogout" runat="server" Text="Log Out" CssClass="btn nav-link" Visible="false" OnClick="btnLogout_Click" />
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link biggerText" runat="server" href="EditProfile.aspx"><i class="bi bi-person-circle blue-text"></i></a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -111,7 +114,10 @@
                     <div class="row first-row">
                         <div class="footer-content col-lg-4">
                             <h3>Contact Us</h3>
-                            <p><i class="bi bi-envelope"></i>: e-commerce@gmail.com</p>
+                            <p>
+                                <a href="mailto:albionaleka@protonmail.com"><i class="bi bi-envelope"></i>: e-commerce@gmail.com</a>
+                            </p>
+                            
                             <p><i class="bi bi-telephone"></i>: +38344123123</p>
                             <p><i class="bi bi-geo-alt-fill"></i>: Kosovo</p>
 
@@ -122,16 +128,16 @@
 
                         <div class="footer-content col-lg-4">
                             <h3>Quick Links</h3>
-                            <p><a href="~/Default">Home</a></p>
-                            <p><a href="~/Products.aspx">Products</a></p>
-                            <p><a href="~/Contact.aspx">Contact</a></p>
+                            <p><a href="Default.aspx">Home</a></p>
+                            <p><a href="Products.aspx">Products</a></p>
+                            <p><a href="Contact.aspx">Contact</a></p>
                         </div>
 
                         <div class="footer-content col-lg-4">
                             <h3>Follow Us</h3>
-                            <p><a href="facebook.com"><i class="bi bi-facebook"></i>: Facebook</a></p>
-                            <p><a href="instagram.com"><i class="bi bi-instagram"></i>: Instagram</a></p>
-                            <p><a href="x.com"><i class="bi bi-twitter"></i>: Twitter</a></p>
+                            <p><a href="https://www.facebook.com" target="_blank"><i class="bi bi-facebook"></i>: Facebook</a></p>
+                            <p><a href="https://www.instagram.com" target="_blank"><i class="bi bi-instagram"></i>: Instagram</a></p>
+                            <p><a href="https://www.x.com" target="_blank"><i class="bi bi-twitter"></i>: Twitter</a></p>
                         </div>
                     </div>
 

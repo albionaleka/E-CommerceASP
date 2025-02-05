@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 
 namespace E_commerce.Models
@@ -10,6 +12,14 @@ namespace E_commerce.Models
         public int UserID { get; set; }
         public string UserType { get; set; }
         public string Email { get; set; }
+    }
+
+    public class UserDetails
+    {
+        public string Name { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
     }
 
     public class Product
@@ -78,4 +88,19 @@ namespace E_commerce.Models
         public decimal Price { get; set; }
         public string Image { get; set; }
     }
+
+    public class Hash
+    {
+        public static string HashPassword(string input)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(input));
+                StringBuilder builder = new StringBuilder();
+                foreach (byte b in bytes)
+                    builder.Append(b.ToString("x2"));
+                return builder.ToString();
+            }
+        }
+    } 
 }

@@ -194,6 +194,7 @@
     <Content Include="data\products.js" />
     <Content Include="Default.aspx" />
     <Content Include="EditProduct.aspx" />
+    <Content Include="EditProfile.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Contact.aspx" />
     <Content Include="Global.asax" />
@@ -203,6 +204,7 @@
     <Content Include="images\carousel2.jpg" />
     <Content Include="images\carousel3.jpg" />
     <Content Include="images\edit-product.svg" />
+    <Content Include="images\edit-profile.svg" />
     <Content Include="images\error-404.svg" />
     <Content Include="images\form-img.png" />
     <Content Include="images\form-img.svg" />
@@ -254,6 +256,7 @@
     <Content Include="Orders.aspx" />
     <Content Include="Posted.aspx" />
     <Content Include="Product.aspx" />
+    <Content Include="db\script.sql" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -303,6 +306,7 @@
     <Content Include="README.md" />
     <Content Include="Products.aspx" />
     <Content Include="SignupBusiness.aspx" />
+    <Content Include="db\dbEcommerce.bak" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\checkout.js" />
     <Content Include="Scripts\index.js" />
@@ -409,6 +413,13 @@
     <Compile Include="EditProduct.aspx.designer.cs">
       <DependentUpon>EditProduct.aspx</DependentUpon>
     </Compile>
+    <Compile Include="EditProfile.aspx.cs">
+      <DependentUpon>EditProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditProfile.aspx.designer.cs">
+      <DependentUpon>EditProfile.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -424,6 +435,7 @@
     <Compile Include="Models\csCart.cs" />
     <Compile Include="Models\csDefault.cs" />
     <Compile Include="Models\csEditProduct.cs" />
+    <Compile Include="Models\csEditProfile.cs" />
     <Compile Include="Models\csModels.cs" />
     <Compile Include="Models\csObject.cs" />
     <Compile Include="Models\csOrders.cs" />

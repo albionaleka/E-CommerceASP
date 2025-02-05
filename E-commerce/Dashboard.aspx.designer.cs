@@ -33,6 +33,15 @@ namespace E_commerce
         protected global::System.Web.UI.WebControls.Button btnLogout;
 
         /// <summary>
+        /// userCount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label userCount;
+
+        /// <summary>
         /// userRepeater control.
         /// </summary>
         /// <remarks>
@@ -42,6 +51,15 @@ namespace E_commerce
         protected global::System.Web.UI.WebControls.Repeater userRepeater;
 
         /// <summary>
+        /// businessesCount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label businessesCount;
+
+        /// <summary>
         /// businessRepeater control.
         /// </summary>
         /// <remarks>
@@ -49,6 +67,15 @@ namespace E_commerce
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater businessRepeater;
+
+        /// <summary>
+        /// productCount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label productCount;
 
         /// <summary>
         /// productRepeater control.

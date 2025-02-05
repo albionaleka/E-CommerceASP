@@ -42,12 +42,12 @@
 
                      <div class="mb-3">
                          <asp:Label runat="server" Text="Password" CssClass="form-label" />
-                         <asp:Textbox runat="server" CssClass="form-control" ID="userPassword" />
+                         <asp:Textbox runat="server" CssClass="form-control" ID="userPassword" TextMode="Password" />
                      </div>
 
                      <div class="mb-3">
                         <asp:Label runat="server" Text="Confirm Password" CssClass="form-label" />
-                        <asp:Textbox runat="server" CssClass="form-control" ID="confirmPassword" />
+                        <asp:Textbox runat="server" CssClass="form-control" ID="confirmPassword" TextMode="Password" />
                     </div>
 
                      <asp:Button runat="server" Text="Sign Up" CssClass="blue-btn mb-3" ID="SignUpBtn" OnClick="SignUpBtn_Click"/>

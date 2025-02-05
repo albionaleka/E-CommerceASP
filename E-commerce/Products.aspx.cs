@@ -48,6 +48,11 @@ namespace E_commerce
         {
             if (e.CommandName == "AddToCart")
             {
+                if (Session["ID"] == null)
+                {
+                    Response.Redirect("~/Login");
+                }
+
                 int productID = Convert.ToInt32(e.CommandArgument);
                 int userID = Convert.ToInt32(Session["ID"]);
 
@@ -66,6 +71,11 @@ namespace E_commerce
 
         protected void CategoryPicker_Change (object sender, EventArgs e)
         {
+            if (Session["ID"] == null)
+            {
+                Response.Redirect("~/Login");
+            }
+
             int categoryID = Convert.ToInt32(CategoryPicker.SelectedValue);
 
             Response.Redirect($"~/Products.aspx?category={categoryID}");

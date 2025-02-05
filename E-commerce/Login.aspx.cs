@@ -21,6 +21,8 @@ namespace E_commerce
             string password = userPassword.Text.Trim();
             bool saveCookies = checkRemember.Checked;
 
+            string hashed = Hash.HashPassword(password);
+
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
                 Response.Write("<script type='text/javascript'>alert('Please fill out all the fields.');</script>");
@@ -33,7 +35,7 @@ namespace E_commerce
                 Response.Cookies["email"].Expires = DateTime.Now.AddDays(10);
             }
 
-            userModel user = csUserLogin.userLogin(email, password);
+            userModel user = csUserLogin.userLogin(email, hashed);
             if (user == null)
             {
                 Response.Write("<script type='text/javascript'>alert('Invalid login credentials.');</script>");
@@ -45,7 +47,7 @@ namespace E_commerce
             Session["ID"] = user.UserID;
             Session["UserType"] = user.UserType;
             Session["Email"] = user.Email;
-            Response.Redirect($"~/Default?user={Session["ID"]}");
+            Response.Redirect($"~/Default");
             
         }
     }

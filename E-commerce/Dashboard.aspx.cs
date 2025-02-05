@@ -30,14 +30,17 @@ namespace E_commerce
                 List<productsInfo> products = getProducts();
                 productRepeater.DataSource = products;
                 productRepeater.DataBind();
+                productCount.Text = $"Products Count: {products.Count}";
 
                 List<businessInfo> businesses = getBusinesses();
                 businessRepeater.DataSource = businesses;
                 businessRepeater.DataBind();
+                businessesCount.Text = $"Business Count: {businesses.Count}";
 
                 List<userInfo> users = getUsers();
                 userRepeater.DataSource = users;
                 userRepeater.DataBind();
+                userCount.Text = $"User Count: {users.Count}";
 
                 List<ordersInfo> orders = getOrders();
                 orderRepeater.DataSource = orders;
@@ -53,11 +56,13 @@ namespace E_commerce
             public string LastName { get; set; }
             public string Email { get; set; }
             public string Role { get; set; }
+            public int Count { get; set; }
         }
 
         public class productsInfo : ProductModel 
         {
             public int BusinessID { get; set; }
+            public int Count { get; set; }
         }
 
         public class businessInfo
@@ -65,6 +70,7 @@ namespace E_commerce
             public int BusinessID { get; set; }
             public string Name { get; set; }
             public string Email { get; set; }
+            public int Count { get; set; }
         }
 
         public class ordersInfo
@@ -78,7 +84,7 @@ namespace E_commerce
 
         protected List<productsInfo> getProducts()
         {
-            string query = "SELECT * FROM tblProduktet";
+            string query = "SELECT *, (SELECT COUNT(*) FROM tblProduktet) AS Count FROM tblProduktet";
             csObject product = new csObject();
 
             DataSet ds = product.RunQuery(query, "Products");
@@ -95,7 +101,8 @@ namespace E_commerce
                     ProductName = row["Emri_Prod"].ToString(),
                     Description = row["Pershkrimi"].ToString(),
                     Price = Math.Round(Convert.ToDecimal(row["Cmimi"]), 2),
-                    ImageURL = row["Foto"].ToString()
+                    ImageURL = row["Foto"].ToString(),
+                    Count = Convert.ToInt32(row["Count"])
                 });
             }
 
@@ -104,7 +111,7 @@ namespace E_commerce
 
         protected List<businessInfo> getBusinesses()
         {
-            string query = "SELECT * FROM tblBizneset";
+            string query = "SELECT *, (SELECT COUNT(*) FROM tblBizneset) AS Count FROM tblBizneset";
 
             csObject business = new csObject();
             DataSet ds = business.RunQuery(query, "Businesses");
@@ -117,7 +124,8 @@ namespace E_commerce
                 {
                     BusinessID = Convert.ToInt32(row["ID_Biznesi"]),
                     Name = row["Emri"].ToString(),
-                    Email = row["Email"].ToString()
+                    Email = row["Email"].ToString(),
+                    Count = Convert.ToInt32(row["Count"])
                 });
             }
 
@@ -126,7 +134,7 @@ namespace E_commerce
 
         protected List<userInfo> getUsers()
         {
-            string query = "SELECT * FROM tblPerdoruesit";
+            string query = "SELECT *, (SELECT COUNT(*) FROM tblPerdoruesit) AS Count FROM tblPerdoruesit";
 
             csObject user = new csObject();
 
@@ -142,7 +150,8 @@ namespace E_commerce
                     Name = row["Emri"].ToString(),
                     LastName = row["Mbiemri"].ToString(),
                     Email = row["Email"].ToString(),
-                    Role = row["UserType"].ToString()
+                    Role = row["UserType"].ToString(),
+                    Count = Convert.ToInt32(row["Count"])
                 });
             }
 
@@ -151,7 +160,7 @@ namespace E_commerce
 
         protected List<ordersInfo> getOrders()
         {
-            string query = "SELECT *, (SELECT COUNT(*) FROM tblPorosite) AS Count FROM tblPorosite";
+            string query = "SELECT *, (SELECT COUNT(*) FROM tblPorosite) AS Count FROM tblPorosite ORDER BY DataKoha DESC";
 
             csObject order = new csObject();
             DataSet ds = order.RunQuery(query, "Orders");
