@@ -97,7 +97,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link biggerText" runat="server" href="EditProfile.aspx"><i class="bi bi-person-circle blue-text"></i></a>
+                            <a class="nav-link biggerText" id="lnkEdit" runat="server" href="EditProfile.aspx" visible="false"><i class="bi bi-person-circle blue-text"></i></a>
                         </li>
                     </ul>
                 </div>

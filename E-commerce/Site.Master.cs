@@ -18,6 +18,7 @@ namespace E_commerce
                 {
                     btnLogout.Visible = true;
                     lnkLogin.Visible = false;
+                    lnkEdit.Visible = false;
 
                     if (Session["UserType"].ToString() == "Business")
                     {
